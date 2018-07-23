@@ -1,13 +1,13 @@
 import * as chai from 'chai';
-import { expect } from 'chai';
-import { SinonSpy, spy } from 'sinon';
-import * as sinonChai from 'sinon-chai';
 import { Observable, of as observableOf, Subject, Subscription } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import { SinonSpy, spy } from 'sinon';
+import * as sinonChai from 'sinon-chai';
 
 import { multiScan } from './multi-scan';
 
 chai.use(sinonChai);
+const expect: Chai.ExpectStatic = chai.expect;
 
 function observedValue<T>(observer: SinonSpy): T {
   const [first] = observer.getCall(observer.callCount - 1).args;
@@ -38,7 +38,7 @@ describe('multiScan', () => {
     const subtract: Subject<number> = new Subject();
     let result$: Observable<number>;
     let resultObserver: sinon.SinonSpy;
-    let destroy: Subject<void> = new Subject();
+    const destroy: Subject<void> = new Subject();
 
     it('adds 3 then subtracts 2', () => {
       add.next(3);
@@ -76,7 +76,7 @@ describe('multiScan', () => {
       interface XyState {
         readonly xs: number;
         readonly ys: number;
-      };
+      }
 
       const x: Subject<'x'> = new Subject();
       const y: Subject<'y'> = new Subject();
@@ -114,10 +114,11 @@ describe('multiScan', () => {
         map(sum => `The sum is ${sum}`),
       );
       const sumObserver: SinonSpy = spy();
-      const messageObserver: SinonSpy = spy()
+      const messageObserver: SinonSpy = spy();
 
       const sumSubscription: Subscription = sum$.subscribe(sumObserver);
-      const messageSubscription: Subscription = sumMessage$.subscribe(messageObserver);
+      const messageSubscription: Subscription =
+        sumMessage$.subscribe(messageObserver);
 
       expect(observedValue(sumObserver)).to.equal(6);
       expect(observedValue(messageObserver)).to.equal('The sum is 6');

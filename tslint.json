@@ -3,9 +3,6 @@
     "tslint:latest",
     "tslint-eslint-rules"
   ],
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
@@ -70,8 +67,6 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
-    "no-unused-expression": true,
-    "no-use-before-declare": true,
     "no-var-keyword": true,
     "one-line": [
       true,
@@ -110,16 +105,6 @@
       "check-separator",
       "check-type"
     ],
-    "no-output-on-prefix": true,
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": true,
-    "no-input-rename": true,
-    "no-output-rename": true,
-    "use-life-cycle-interface": true,
-    "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true,
     "typedef": [
       true,
       "call-signature",
@@ -192,5 +177,7 @@
     ],
     "no-inferrable-types": false,
     "no-non-null-assertion": false,
+    "no-unused-expression": false,
+    "no-use-before-declare": false
   }
 }

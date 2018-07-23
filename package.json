@@ -1,5 +1,22 @@
 {
   "private": true,
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverage": false,
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$"
+  },
   "dependencies": {
     "rxjs": "6.0.0"
   },
@@ -13,6 +30,7 @@
     "jest-cli": "^23.4.1",
     "sinon": "^6.1.4",
     "sinon-chai": "^3.2.0",
+    "ts-jest": "^23.0.1",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.3.1",
     "typescript": "^2.9.2"

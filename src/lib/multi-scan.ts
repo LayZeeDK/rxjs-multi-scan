@@ -1,6 +1,7 @@
 import { merge, Observable } from 'rxjs';
 import { map, scan } from 'rxjs/operators';
 
+// tslint:disable:ter-max-len
 export function multiScan<TSource, TSink>(
   source: Observable<TSource>,
   reducer: (accumulator: TSink, value: TSource) => TSink,
@@ -141,15 +142,19 @@ export function multiScan<TSource1, TSource2, TSource3, TSource4, TSource5, TSou
   reducer10: (accumulator: TSink, value: TSource10) => TSink,
   initialValue: TSink,
 ): Observable<TSink>;
+// tslint:enable:ter-max-len
 export function multiScan<TSink, TSource>(...args: any[]): Observable<TSink> {
   const initialValue: TSink = args.slice(-1)[0];
   args = args.slice(0, -1);
   const sources: ReadonlyArray<Observable<[TSource, number]>> = args
     .filter((_, argumentIndex) => argumentIndex % 2 === 0)
-    .map((source: Observable<TSource>, sourceIndex): Observable<[TSource, number]> =>
+    .map((
+      source: Observable<TSource>,
+      sourceIndex: number,
+    ): Observable<[TSource, number]> =>
       source.pipe(map((value: TSource): [TSource, number] =>
         [value, sourceIndex])));
-  const reducers: ReadonlyArray<(TSink, TSource) => TSink> =
+  const reducers: ReadonlyArray<(acc: TSink, value: TSource) => TSink> =
     args.filter((_, argumentIndex) => argumentIndex % 2 === 1);
 
   return merge(...sources).pipe(
