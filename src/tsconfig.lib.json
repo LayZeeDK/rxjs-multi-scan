@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "es2015"
+    ],
+    "moduleResolution": "node",
+    "outDir": "../dist/lib",
+  },
+  "exclude": [
+    ".ng_build",
+    "../node_modules/@types/*"
+  ]
+}
