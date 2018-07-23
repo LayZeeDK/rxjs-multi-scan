@@ -1,25 +1,46 @@
 {
-  "name": "rxjs-multi-scan",
-  "version": "1.0.0",
-  "description": "multiScan operator for RxJS",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LayZeeDK/rxjs-multi-scan.git"
+  "private": true,
+  "scripts": {
+    "build": "ng-packagr -p src/ng-package.json",
+    "lint": "tslint --project tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
-  "keywords": [
-    "multiscan",
-    "rxjs",
-    "operator",
-    "operators",
-    "scan"
-  ],
-  "author": "Lars Gyrup Brink Nielsen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LayZeeDK/rxjs-multi-scan/issues"
+  "jest": {
+    "collectCoverage": false,
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$"
   },
-  "homepage": "https://github.com/LayZeeDK/rxjs-multi-scan#readme",
   "dependencies": {
     "rxjs": "6.0.0"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^6.0.9",
+    "@angular/compiler-cli": "^6.0.9",
+    "@angular/core": "^6.0.9",
+    "@types/chai": "^4.1.4",
+    "@types/jest": "^23.3.0",
+    "@types/node": "^8.10.21",
+    "babel-core": "^6.26.3",
+    "chai": "^4.1.2",
+    "jest": "^23.4.1",
+    "jest-cli": "^23.4.1",
+    "ng-packagr": "^4.0.0",
+    "sinon": "^6.1.4",
+    "sinon-chai": "^3.2.0",
+    "ts-jest": "^23.0.1",
+    "tsickle": "^0.32.0",
+    "tslib": "^1.9.3",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "~2.7.2",
+    "zone.js": "~0.8.26"
   }
 }
