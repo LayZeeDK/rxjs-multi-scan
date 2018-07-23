@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "build": "ng-packagr -p src/ng-package.json",
     "lint": "tslint --project tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch"
