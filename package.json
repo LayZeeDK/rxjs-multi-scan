@@ -1,7 +1,7 @@
 {
   "name": "rxjs-multi-scan",
   "version": "1.0.0",
-  "description": "multiScan operator for RxJS",
+  "description": "multiScan operator for RxJS - Multiple sources for scan operation",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LayZeeDK/rxjs-multi-scan.git"
