@@ -1,10 +1,22 @@
 {
   "name": "rxjs-multi-scan",
-  "version": "1.0.0",
   "description": "multiScan operator for RxJS - Multiple sources for scan operation",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Lars Gyrup Brink Nielsen",
+    "email": "larsbrinknielsen@gmail.com",
+    "url": "https://github.com/LayZeeDK"
+  },
+  "homepage": "https://github.com/LayZeeDK/rxjs-multi-scan",
+  "bugs": "https://github.com/LayZeeDK/rxjs-multi-scan/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LayZeeDK/rxjs-multi-scan.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "unknown"
   },
   "keywords": [
     "multiscan",
@@ -13,12 +25,6 @@
     "operators",
     "scan"
   ],
-  "author": "Lars Gyrup Brink Nielsen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LayZeeDK/rxjs-multi-scan/issues"
-  },
-  "homepage": "https://github.com/LayZeeDK/rxjs-multi-scan#readme",
   "dependencies": {
     "rxjs": "6.0.0"
   },
