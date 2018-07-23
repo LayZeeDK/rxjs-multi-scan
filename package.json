@@ -1,0 +1,25 @@
+{
+  "name": "rxjs-multi-scan",
+  "version": "1.0.0",
+  "description": "multiScan operator for RxJS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LayZeeDK/rxjs-multi-scan.git"
+  },
+  "keywords": [
+    "multiscan",
+    "rxjs",
+    "operator",
+    "operators",
+    "scan"
+  ],
+  "author": "Lars Gyrup Brink Nielsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LayZeeDK/rxjs-multi-scan/issues"
+  },
+  "homepage": "https://github.com/LayZeeDK/rxjs-multi-scan#readme",
+  "dependencies": {
+    "rxjs": "6.0.0"
+  }
+}
