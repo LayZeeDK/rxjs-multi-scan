@@ -1,28 +1,13 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "declaration": true,
-    "importHelpers": true,
-    "inlineSources": true,
-    "lib": [
-      "es2015"
-    ],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "outDir": "out-tsc/lib",
+    "module": "commonjs",
+    "target": "es5",
     "sourceMap": true,
-    "strict": true,
-    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "types": []
+    ]
   },
   "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "src/lib/**/*"
+    "node_modules"
   ]
 }
