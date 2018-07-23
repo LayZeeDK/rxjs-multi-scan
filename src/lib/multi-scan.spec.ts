@@ -1,10 +1,16 @@
+import * as chai from 'chai';
+import { expect } from 'chai';
+import { SinonSpy, spy } from 'sinon';
+import * as sinonChai from 'sinon-chai';
 import { Observable, of as observableOf, Subject, Subscription } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { multiScan } from './multi-scan';
 
-function observedValue<T>(observer: jasmine.Spy): T {
-  const [first, ...rest] = observer.calls.mostRecent().args;
+chai.use(sinonChai);
+
+function observedValue<T>(observer: SinonSpy): T {
+  const [first] = observer.getCall(observer.callCount - 1).args;
 
   return first;
 }
@@ -16,7 +22,7 @@ describe('multiScan', () => {
         add, (left, right) => left + right,
         subtract, (left, right) => left - right,
         0);
-      resultObserver = jasmine.createSpy('result observer');
+      resultObserver = spy();
       result$.pipe(
         takeUntil(destroy),
       ).subscribe(resultObserver);
@@ -31,18 +37,18 @@ describe('multiScan', () => {
     const add: Subject<number> = new Subject();
     const subtract: Subject<number> = new Subject();
     let result$: Observable<number>;
-    let resultObserver: jasmine.Spy;
+    let resultObserver: sinon.SinonSpy;
     let destroy: Subject<void> = new Subject();
 
     it('adds 3 then subtracts 2', () => {
       add.next(3);
 
-      expect(resultObserver).toHaveBeenCalledTimes(1);
-      expect(observedValue(resultObserver)).toBe(3);
+      expect(resultObserver.calledOnce).to.be.true;
+      expect(observedValue(resultObserver)).to.equal(3);
 
       subtract.next(2);
-      expect(resultObserver).toHaveBeenCalledTimes(2);
-      expect(observedValue(resultObserver)).toBe(1);
+      expect(resultObserver.calledTwice).to.be.true;
+      expect(observedValue(resultObserver)).to.equal(1);
     });
 
     it('adds 10 two times then subtracts 5 then adds 6', () => {
@@ -51,8 +57,8 @@ describe('multiScan', () => {
       subtract.next(5);
       add.next(6);
 
-      expect(resultObserver).toHaveBeenCalledTimes(4);
-      expect(observedValue(resultObserver)).toBe(21);
+      expect(resultObserver.callCount).to.equal(4);
+      expect(observedValue(resultObserver)).to.equal(21);
     });
 
     it('adds 2 then subtracts 6 two times', () => {
@@ -60,8 +66,8 @@ describe('multiScan', () => {
       subtract.next(6);
       subtract.next(6);
 
-      expect(resultObserver).toHaveBeenCalledTimes(3);
-      expect(observedValue(resultObserver)).toBe(-10);
+      expect(resultObserver.calledThrice).to.be.true;
+      expect(observedValue(resultObserver)).to.equal(-10);
     });
   });
 
@@ -78,14 +84,14 @@ describe('multiScan', () => {
         x, state => ({ ...state, xs: state.xs + 1 }),
         y, state => ({ ...state, ys: state.ys + 1 }),
         { xs: 0, ys: 0 });
-      const observer: jasmine.Spy = jasmine.createSpy('XY observer');
+      const observer: SinonSpy = spy();
 
       const subscription: Subscription = xys.subscribe(observer);
       x.next('x');
       y.next('y');
       y.next('y');
 
-      expect(observedValue(observer)).toEqual({ xs: 1, ys: 2 });
+      expect(observedValue(observer)).to.deep.equal({ xs: 1, ys: 2 });
       subscription.unsubscribe();
     });
   });
@@ -107,14 +113,14 @@ describe('multiScan', () => {
       const sumMessage$: Observable<string> = sum$.pipe(
         map(sum => `The sum is ${sum}`),
       );
-      const sumObserver: jasmine.Spy = jasmine.createSpy('sum observer');
-      const messageObserver: jasmine.Spy = jasmine.createSpy('message observer')
+      const sumObserver: SinonSpy = spy();
+      const messageObserver: SinonSpy = spy()
 
       const sumSubscription: Subscription = sum$.subscribe(sumObserver);
       const messageSubscription: Subscription = sumMessage$.subscribe(messageObserver);
 
-      expect(observedValue(sumObserver)).toBe(6);
-      expect(observedValue(messageObserver)).toBe('The sum is 6');
+      expect(observedValue(sumObserver)).to.equal(6);
+      expect(observedValue(messageObserver)).to.equal('The sum is 6');
       sumSubscription.unsubscribe();
       messageSubscription.unsubscribe();
     });
