@@ -2,6 +2,8 @@
   "private": true,
   "scripts": {
     "build": "ng-packagr -p src/ng-package.json",
+    "postbuild": "npm run build:readme",
+    "build:readme": "copyfiles README.md dist/lib",
     "lint": "tslint --project tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch"
