@@ -17,9 +17,9 @@ export function multiScan<TSource1, TSource2, TSink>(
 export function multiScan<TSource1, TSource2, TSource3, TSink>(
   source1: Observable<TSource1>,
   reducer1: (accumulator: TSink, value: TSource1) => TSink,
-  source2: Observable<TSource1>,
+  source2: Observable<TSource2>,
   reducer2: (accumulator: TSink, value: TSource2) => TSink,
-  source3: Observable<TSource1>,
+  source3: Observable<TSource3>,
   reducer3: (accumulator: TSink, value: TSource3) => TSink,
   initialValue: TSink,
 ): Observable<TSink>;
