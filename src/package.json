@@ -23,7 +23,8 @@
     "rxjs",
     "operator",
     "operators",
-    "scan"
+    "scan",
+    "combination"
   ],
   "peerDependencies": {
     "rxjs": "^6.0.0"
