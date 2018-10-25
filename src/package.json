@@ -1,7 +1,7 @@
 {
   "name": "rxjs-multi-scan",
   "description": "multiScan operator for RxJS - A combination operator that combines multiple sources of scan operations.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": {
     "name": "Lars Gyrup Brink Nielsen",
